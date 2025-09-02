@@ -1,0 +1,8 @@
+{
+  "pylint.args": ["[\"--disable=C0114,C0115,C0116\"]"],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

@@ -1,28 +1,40 @@
 import { describe, it } from "node:test"
 import { deepEqual, throws, rejects } from "node:assert/strict"
 import {
-  firstThenLowerCase,
+  firstThenApply,
   say,
   powersGenerator,
   meaningfulLineCount,
   Quaternion,
 } from "./exercises.js"
 
-describe("The firstThenLowerCase function", () => {
-  const nonEmpty = (s) => s !== ""
+describe("The firstThenApply function", () => {
+  const nonempty = (s) => s !== ""
   const lengthGreaterThan3 = (s) => s.length > 3
-  it("works", () => {
-    deepEqual(firstThenLowerCase([], nonEmpty), undefined)
-    deepEqual(firstThenLowerCase(["", "A", "B"], nonEmpty), "a")
-    deepEqual(
-      firstThenLowerCase(["", "A", "ABC"], lengthGreaterThan3),
-      undefined
-    )
-    deepEqual(
-      firstThenLowerCase(["ABC", "ABCD", "ABCDE"], lengthGreaterThan3),
-      "abcd"
-    )
-  })
+  const toLower = (s) => s.toLowerCase()
+  const startsWithB = (s) => s.toLowerCase().startsWith("b")
+  deepEqual(firstThenApply([], nonempty, toLower), undefined)
+  deepEqual(firstThenApply(["", "A", "B"], nonempty, toLower), "a")
+  deepEqual(
+    firstThenApply(["", "A", "ABC"], lengthGreaterThan3, toLower),
+    undefined
+  )
+  deepEqual(
+    firstThenApply(["ABC", "ABCD", "ABCDE"], lengthGreaterThan3, toLower),
+    "abcd"
+  )
+  deepEqual(
+    firstThenApply(["ABC", "ABCD", "ABCDE", "Bee"], startsWithB, toLower),
+    "bee"
+  )
+  deepEqual(
+    firstThenApply(
+      ["ABC", "ABCD", "ABCDE", "Bee"],
+      startsWithB,
+      (s) => s.length
+    ),
+    3
+  )
 })
 
 describe("The say function", () => {

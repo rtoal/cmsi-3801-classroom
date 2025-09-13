@@ -39,10 +39,17 @@ end
 suite("first_then_lower_case")
 function nonEmpty(s) return s ~= "" end
 function lengthGreaterThan3(s) return #s > 3 end
-expect(first_then_lower_case({}, nonEmpty) == nil)
-expect(first_then_lower_case({"", "A", "B"}, nonEmpty) == "a")
-expect(first_then_lower_case({"", "A", "ABC"}, lengthGreaterThan3) == nil)
-expect(first_then_lower_case({"ABC", "ABCD", "ABCDE"}, lengthGreaterThan3) == "abcd")
+function to_lower(s) return string.lower(s) end
+function starts_with_b(s) return string.lower(string.sub(s, 1, 1)) == "b" end
+
+expect(first_then_apply({}, nonEmpty, to_lower) == nil)
+expect(first_then_apply({"", "A", "B"}, nonEmpty, to_lower) == "a")
+expect(first_then_apply({"", "A", "ABC"}, lengthGreaterThan3, to_lower) == nil)
+expect(first_then_apply({"ABC", "ABCD", "ABCDE"}, lengthGreaterThan3, to_lower) == "abcd")
+expect(first_then_apply(
+    {"ABC", "ABCD", "ABCDE", "Bee"}, starts_with_b, to_lower) == "bee")
+expect(first_then_apply(
+    {"ABC", "ABCD", "ABCDE", "Bee"}, starts_with_b, function(s) return #s end) == 3)
 
 suite("powers_generator")
 gen = powers_generator(3, 100)

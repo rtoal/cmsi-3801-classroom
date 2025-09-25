@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "test": "tsc && node --test dist/exercises.test.js"
+  },
+  "dependencies": {
+    "@types/node": "^20.19.17",
+    "typescript": "^5.9.2"
+  }
+}

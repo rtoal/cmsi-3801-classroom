@@ -3,12 +3,6 @@ import Data.Text (toLower, pack, unpack)
 import Text.Printf (printf)
 import Exercises
 
-test_change :: Integer -> (Integer, Integer, Integer, Integer) -> Bool
-test_change amount (q, d, n, p) =
-    case (change amount) of
-        Left message -> False
-        Right mapping -> toDescList mapping == [(25, q), (10, d), (5, n), (1, p)]
-
 fixture :: [(String, Bool)]
 fixture =
     [ ( "firstThenApply empty list", (firstThenApply [] (/= "") lower) == Nothing )

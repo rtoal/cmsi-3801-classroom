@@ -4,5 +4,14 @@
     "editor.defaultFormatter": "ms-python.autopep8"
   },
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "C_Cpp.default.cStandard": "c23",
+  "C_Cpp.default.cppStandard": "c++23",
+  "C_Cpp.default.intelliSenseMode": "macos-clang-arm64",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  }
 }
